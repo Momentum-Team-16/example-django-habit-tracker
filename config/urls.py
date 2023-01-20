@@ -20,6 +20,7 @@ from config import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("habits/", views.list_habits, name="habit_list"),
 ]
 
 if settings.DEBUG:

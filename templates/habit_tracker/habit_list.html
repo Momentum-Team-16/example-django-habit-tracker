@@ -1,0 +1,15 @@
+{% extends 'habit_tracker/base.html' %}
+
+{% block content %}
+<h1> Habit List </h1>
+
+<h2>{{ greeting }}</h2>
+
+<div class="habit-list">
+  <ul>
+    {% for habit in habits %}
+      <li>{{ habit.title }}, {{habit.created_at }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
