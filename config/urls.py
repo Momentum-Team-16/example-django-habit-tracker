@@ -21,6 +21,7 @@ from config import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("habits/", views.list_habits, name="habit_list"),
+    path('accounts/', include('registration.backends.simple.urls')),
 ]
 
 if settings.DEBUG:

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "debug_toolbar",
+    "registration",
     "habit_tracker",
 ]
 
@@ -131,3 +132,5 @@ AUTH_USER_MODEL = "habit_tracker.User"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+LOGIN_REDIRECT_URL="/habits"

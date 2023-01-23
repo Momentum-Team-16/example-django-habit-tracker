@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from .models import Habit
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def list_habits(request):
     # make a query for all the habits
     habits = Habit.objects.all()
