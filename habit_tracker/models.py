@@ -28,9 +28,20 @@ class Habit(BaseModel):
 
 
 
-class Tracker(BaseModel):
+class Tracker(models.Model):
     habit = models.ForeignKey(Habit, on_delete=models.CASCADE, related_name="trackers")
     amount = models.PositiveIntegerField(default=0)
+    date = models.DateField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["date", "habit"], name="unique_for_habit_and_date"
+            )
+        ]
 
     def __str__(self):
-        return f"Tracker for {self.habit.title} on {self.created_at}"
+        return f"Tracker for {self.habit.title} on {self.date}"
+
+    def __repr__(self):
+        return f"<Record for {self.habit.title} pk={self.pk}>"

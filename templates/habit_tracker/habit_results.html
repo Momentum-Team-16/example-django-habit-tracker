@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section habit-results">
+  <h1 class="title is-size-1">Results for <span class="has-text-info">{{habit.title}}</span></h1>
+  <div class="block content">
+    <a href={% url 'habit_detail' habit_pk=habit.pk %} class="link is-info is-size-5"><ion-icon name="chevron-back-outline"></ion-icon> See all results for this habit</a>
+  </div>
+  <h3 class="title is-size-3">{{tracker.date}}</h3>
+  {% if tracker.amount %}
+    <section class="section habit-daily-record">
+        <div class="daily-record block">
+            <p>{{tracker.date}} results {{tracker.amount}}</p>
+            <p>Habit Target: {{habit.goal}}
+        </div>
+        {% if tracker.amount == habit.goal %}
+        <div class="box block has-background-success has-text-weight-bold">
+          You met your goal! 🎉
+        </div>
+          {% elif tracker.amount > habit.goal %}
+          <div class="box block has-background-success has-text-weight-bold">
+          You exceeded your goal! Way to go! 🎉🎉
+          <div>
+          {% endif %}
+    </section>
+{% endif %}
+  <section class='results-form'>
+    <h3 class="is-size-3 has-text-color-success">Record your results for today</h3>
+    <h4 class="is-size-4">Or choose a different day</h4>
+    {% include 'habit_tracker/_tracker_form.html' %}
+  <section>
+</section>
+
+{% endblock content %}
+
