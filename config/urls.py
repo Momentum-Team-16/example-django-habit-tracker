@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from habit_tracker import views
+from api import urls as api_urls
 from config import settings
 
 urlpatterns = [
@@ -35,6 +36,7 @@ urlpatterns = [
     ),
     path("admin/", admin.site.urls),
     path("accounts/", include("registration.backends.simple.urls")),
+    path("api/", include(api_urls)),
 ]
 
 if settings.DEBUG:
