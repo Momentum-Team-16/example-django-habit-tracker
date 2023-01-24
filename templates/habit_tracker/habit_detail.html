@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title is-size-1">{{habit.title}}</h1>
+<section class="section habit-detail">
+  <ul>
+  {% for tracker in habit.trackers.all %}
+    <li>{{tracker.amount }} on {{tracker.date}}</li>
+  {% empty %}
+    <li class="is-size-4 has-text-info has-text-weight-bold">No daily records yet!</li>
+  {% endfor %}
+</ul>
+</section>
+{% endblock content %}

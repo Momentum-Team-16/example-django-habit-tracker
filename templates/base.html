@@ -1,12 +1,48 @@
+{% load  static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href={% static 'css/bulma.min.css' %}>
+  <title>{% block title %}Habit Tracker{% endblock title %}</title>
 </head>
 <body>
-  {% block content %}{% endblock %}
+  <nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+      <ion-icon name="paw-outline" size="large" class="has-text-white"></ion-icon>
+      </div>
+      <div class="navbar-item">
+        <span class="is-size-1 has-text-white has-text-weight-semibold"><a href={% url 'habit_list' %} class="has-text-white">Habit Tracker</a></span>
+      </div>
+    </div>
+    <div class="navbar-menu">
+      {% if user.is_authenticated %}
+      <div class="navbar-end">
+        <div class="navbar-item">
+        <a class=" button is-link" href={% url 'auth_logout' %}>
+          Logout
+        </a>
+      </div>
+      </div>
+      {% else %}
+      <div class="navbar-end">
+        <a class="navbar-item button is-link" href={% url 'auth_login' %}>
+          Login
+        </a>
+        <a class="navbar-item button is-link" href={% url 'auth_register' %}>
+          Register
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+  <div class="container">
+  {% block content %} {% endblock content %}
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

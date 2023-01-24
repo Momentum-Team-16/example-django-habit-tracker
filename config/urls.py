@@ -19,10 +19,13 @@ from habit_tracker import views
 from config import settings
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("", views.list_habits, name="habit_list"),
     path("habits/", views.list_habits, name="habit_list"),
-    path('accounts/', include('registration.backends.simple.urls')),
+    path("habits/new", views.habit_new, name="habit_new"),
+    path("habits/<int:habit_pk>", views.habit_detail, name="habit_detail"),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("registration.backends.simple.urls")),
 ]
 
 if settings.DEBUG:
-  urlpatterns += path('__debug__/', include('debug_toolbar.urls')),
+    urlpatterns += (path("__debug__/", include("debug_toolbar.urls"))),

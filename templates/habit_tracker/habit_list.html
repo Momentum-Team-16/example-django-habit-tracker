@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1> Habit List </h1>
-
-<h2>{{ greeting }}</h2>
-
-<div class="habit-list">
-  <ul>
+<section class="section habit-list">
+  <h2 class="title is-size-2">Your Habits<h2>
+  <ul class="habit-list">
     {% for habit in habits %}
-      <li>{{ habit.title }}, {{habit.created_at }}</li>
+    <li class="habit-item"><a href={% url 'habit_detail' habit_pk=habit.pk %}>{{habit.title}}</a></li>
     {% endfor %}
-  </ul>
-</div>
-{% endblock %}
+  <ul>
+</section>
+<section class="section habit-form">
+  <h2 class="title is-size-3">Add a new habit to the list!</h2>
+  {% include 'habit_tracker/_habit_form.html'%}
+</section>
+{% endblock content %}
