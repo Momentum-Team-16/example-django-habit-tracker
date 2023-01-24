@@ -14,7 +14,7 @@ class BaseModel(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-      abstract = True
+        abstract = True
 
 
 class Habit(BaseModel):
@@ -25,7 +25,6 @@ class Habit(BaseModel):
 
     def __str__(self):
         return self.title
-
 
 
 class Tracker(models.Model):
