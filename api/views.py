@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.response import Response
@@ -37,3 +37,16 @@ class HabitListAPIView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
+class TrackerListCreateAPIView(generics.ListCreateAPIView):
+    serializer_class = serializers.TrackerSerializer
+
+    def get_queryset(self):
+        habit = get_object_or_404(Habit, pk=self.kwargs["habit_pk"])
+        return habit.trackers.all()
+
+    def perform_create(self, serializer):
+        # TODO: handle the Integrity Error if a tracker for this date exists already
+        habit = get_object_or_404(Habit, pk=self.kwargs["habit_pk"])
+        serializer.save(habit=habit)
