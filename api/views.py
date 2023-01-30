@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import  get_object_or_404
 from rest_framework.views import APIView
-from rest_framework import generics
+from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from habit_tracker.models import Habit
 from . import serializers
@@ -33,6 +33,7 @@ from . import serializers
 class HabitListAPIView(generics.ListCreateAPIView):
     queryset = Habit.objects.all()
     serializer_class = serializers.HabitSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
     def perform_create(self, serializer):

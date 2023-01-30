@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     "django_extensions",
     "debug_toolbar",
     "registration",
-    'rest_framework',
+    "rest_framework",
+    "rest_framework.authtoken",
+    "djoser",
     "habit_tracker",
 ]
 
@@ -141,7 +143,10 @@ INTERNAL_IPS = [
 LOGIN_REDIRECT_URL = "/habits"
 
 REST_FRAMEWORK = {
-  'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
-    ]
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly"
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication"
+    ],
 }
