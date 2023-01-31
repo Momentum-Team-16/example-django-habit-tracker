@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from habit_tracker.models import Habit
 from . import serializers
 
+from django.db import IntegrityError
+
 # Create your views here.
 # class HabitListView(APIView):
 #     def get(self, request, format=None):
@@ -51,3 +53,9 @@ class TrackerListCreateAPIView(generics.ListCreateAPIView):
         # TODO: handle the Integrity Error if a tracker for this date exists already
         habit = get_object_or_404(Habit, pk=self.kwargs["habit_pk"])
         serializer.save(habit=habit)
+
+    def create(self, request, *args, **kwargs):
+        try:
+            super().create(request, *args, **kwargs)
+        except IntegrityError as error:
+            return Response(error.message, status=status.HTTP_400_BAD_REQUEST)

@@ -11,6 +11,8 @@ psycopg2-binary = "*"
 django-debug-toolbar = "*"
 djangorestframework = "*"
 djoser = "*"
+django-environ = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 black = "*"
