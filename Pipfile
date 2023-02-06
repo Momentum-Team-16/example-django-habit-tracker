@@ -13,6 +13,7 @@ djangorestframework = "*"
 djoser = "*"
 django-environ = "*"
 django-cors-headers = "*"
+faker = "*"
 
 [dev-packages]
 black = "*"
