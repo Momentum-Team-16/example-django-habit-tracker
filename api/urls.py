@@ -7,4 +7,5 @@ urlpatterns = [
   path('api-auth/', include('rest_framework.urls')),
   path('auth/', include('djoser.urls')),
   path('auth/', include('djoser.urls.authtoken')),
+  path("users/me/avatar", views.UserAvatarCreateView.as_view(), name="user_avatar"),
 ]
