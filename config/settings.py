@@ -163,3 +163,4 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'content-disposition',
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://django-habit-tracker.fly.dev"]
