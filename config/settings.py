@@ -33,8 +33,8 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
-
+# Set to "*" for Fly.io
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -162,3 +162,4 @@ CORS_ALLOW_ALL_ORIGINS=True
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'content-disposition',
 ]
+

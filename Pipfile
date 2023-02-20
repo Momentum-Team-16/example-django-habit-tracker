@@ -15,6 +15,7 @@ django-environ = "*"
 django-cors-headers = "*"
 faker = "*"
 pillow = "*"
+gunicorn = "*"
 
 [dev-packages]
 black = "*"
